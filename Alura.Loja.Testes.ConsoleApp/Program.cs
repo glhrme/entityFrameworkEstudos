@@ -10,21 +10,25 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Produto p = new Produto();
-            p.Nome = "Pão Francês";
-            p.Categoria = "Padaria";
-            p.PrecoUn = 0.5;
-            p.Unidade = "Unidade";
-
-            var compra = new Compra();
-            compra.Quantidade = 10;
-            compra.Produto = p;
-            compra.Preco = p.PrecoUn * compra.Quantidade;
-
-            using(var contexto = new LojaContext())
+            var p1 = new Produto()
             {
-                contexto.Produtos.Add(p);
-                contexto.Compras.Add(compra);
+                Nome = "Suco",
+                PrecoUn = 1.5,
+                Categoria = "Bebida",
+                Unidade = "Litros"
+            };
+            var promocaoPascoa = new Promocao();
+            promocaoPascoa.Descricao = "Pascoa Lek";
+            promocaoPascoa.DataInicio = DateTime.Now;
+            promocaoPascoa.DataFim = DateTime.Now.AddDays(15);
+
+            promocaoPascoa.IncluiProduto(p1);
+            //promocaoPascoa.Produto.Add(new Produto());
+            //promocaoPascoa.Produto.Add(new Produto());
+
+            using (var contexto = new LojaContext())
+            {
+                contexto.Promocoes.Add(promocaoPascoa);
                 contexto.SaveChanges();
             }
         }
