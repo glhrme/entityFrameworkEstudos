@@ -17,7 +17,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             p.Unidade = "Unidade";
 
             var compra = new Compra();
-            compra.Quantidade = 6;
+            compra.Quantidade = 10;
             compra.Produto = p;
             compra.Preco = p.PrecoUn * compra.Quantidade;
 
