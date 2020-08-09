@@ -10,6 +10,28 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
+            
+            
+        }
+
+        public static void OPN()
+        {
+            var fulano = new Cliente();
+            fulano.Nome = "G Santos";
+            fulano.EnderecoEntrega = new Endereco()
+            {
+                Rua = "Oi Mundo"
+            };
+
+            using (var contexto = new LojaContext())
+            {
+                contexto.Clientes.Add(fulano);
+                contexto.SaveChanges();
+            }
+        }
+
+        public static void NPN()
+        {
             var p1 = new Produto()
             {
                 Nome = "Suco",
